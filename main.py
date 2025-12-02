@@ -4,6 +4,21 @@ from stats import (
     sort_char,
 )
 
+import sys
+import os
+
+
+def check_args():
+    if len(sys.argv) == 2:
+        if os.path.exists(sys.argv[1]):
+            return sys.argv[1]
+        else:
+            print("Invalid Path")
+            sys.exit(1)
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
 
 def get_book_text(file_path):
     with open(file_path) as f:
@@ -23,7 +38,7 @@ def print_report(book_path, word_count, char_sort):
 
 
 def main():
-    book_path = "books/frankenstein.txt"
+    book_path = check_args()
     text = get_book_text(book_path)
     word_count = count_words(text)
     char_count = count_characters(text)
