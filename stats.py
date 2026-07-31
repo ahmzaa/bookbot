@@ -14,8 +14,8 @@ def count_characters(file_contents):
     return char_dict
 
 
-def sort_on(items):
-    return items["num"]
+def sort_on(char_count):
+    return char_count["num"]
 
 
 def sort_char(char_dict):
